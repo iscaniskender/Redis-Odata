@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redis.InMemoryApp", "Excersize\Redis.InMemoryApp.csproj", "{AFC6DA4D-611B-4B35-BB4C-564E1D7A616E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Redis.InMemoryApp", "Excersize\Redis.InMemoryApp.csproj", "{AFC6DA4D-611B-4B35-BB4C-564E1D7A616E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDistributedCacheRedisApp.Web", "IDistributedCacheRedisApp.Web\IDistributedCacheRedisApp.Web.csproj", "{23B349DB-3C67-486D-9BC7-B3076D6EB4F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{AFC6DA4D-611B-4B35-BB4C-564E1D7A616E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFC6DA4D-611B-4B35-BB4C-564E1D7A616E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFC6DA4D-611B-4B35-BB4C-564E1D7A616E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23B349DB-3C67-486D-9BC7-B3076D6EB4F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23B349DB-3C67-486D-9BC7-B3076D6EB4F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23B349DB-3C67-486D-9BC7-B3076D6EB4F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23B349DB-3C67-486D-9BC7-B3076D6EB4F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
