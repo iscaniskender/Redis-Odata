@@ -9,6 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IDistributedCacheRedisApp.W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedisExchangeAPI.Web", "RedisExchangeAPI.Web\RedisExchangeAPI.Web.csproj", "{92472C7B-626F-4E61-9D56-50D10C3FD8DB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cache", "Cache", "{A5B5F301-564C-4778-B709-34D073FA205B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Odata", "Odata", "{BE055A0C-97DA-48A6-864B-9BBE86CAEBCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIOdata.API", "APIOdata.API\APIOdata.API.csproj", "{7CA5EF08-219C-4C8B-9199-A9394A8221FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +33,19 @@ Global
 		{92472C7B-626F-4E61-9D56-50D10C3FD8DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92472C7B-626F-4E61-9D56-50D10C3FD8DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92472C7B-626F-4E61-9D56-50D10C3FD8DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CA5EF08-219C-4C8B-9199-A9394A8221FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CA5EF08-219C-4C8B-9199-A9394A8221FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CA5EF08-219C-4C8B-9199-A9394A8221FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CA5EF08-219C-4C8B-9199-A9394A8221FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AFC6DA4D-611B-4B35-BB4C-564E1D7A616E} = {A5B5F301-564C-4778-B709-34D073FA205B}
+		{23B349DB-3C67-486D-9BC7-B3076D6EB4F1} = {A5B5F301-564C-4778-B709-34D073FA205B}
+		{92472C7B-626F-4E61-9D56-50D10C3FD8DB} = {A5B5F301-564C-4778-B709-34D073FA205B}
+		{7CA5EF08-219C-4C8B-9199-A9394A8221FE} = {BE055A0C-97DA-48A6-864B-9BBE86CAEBCA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4102FF8C-2A9E-44FF-9D4B-292F855C5D63}
