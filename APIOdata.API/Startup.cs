@@ -66,7 +66,8 @@ namespace APIOdata.API
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.Select();
+                endpoints.OrderBy().MaxTop(null).SkipToken().Count().Filter();
+                endpoints.Select().Expand();
                 endpoints.MapODataRoute("odata","odata", builder.GetEdmModel());
                 endpoints.MapControllers();
             });

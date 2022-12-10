@@ -7,11 +7,11 @@ using System.Linq;
 namespace APIOdata.API.Controllers
 {
     [Route("odata/Categories")]
-    public class CetegoriesController : ODataController
+    public class CategoriesController : ODataController
     {
         private readonly AppDbContext appDbContext;
 
-        public CetegoriesController(AppDbContext appDbContext)
+        public CategoriesController(AppDbContext appDbContext)
         {
             this.appDbContext = appDbContext;   
         }
@@ -21,6 +21,11 @@ namespace APIOdata.API.Controllers
         public IActionResult Get()
         { 
             return Ok(appDbContext.Categories.ToList());
+        }
+        [EnableQuery]
+        public IActionResult GetCategory([FromODataUri] int key)
+        {
+            return Ok(appDbContext.Products.Where(x => x.Id == key));
         }
     }
 }
