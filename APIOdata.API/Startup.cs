@@ -30,7 +30,7 @@ namespace APIOdata.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+
 
             services.AddDbContext<AppDbContext>(options =>
             {
@@ -50,7 +50,47 @@ namespace APIOdata.API
 
             builder.EntitySet<Product>("Products");
 
+            #region Action
 
+            //parametre alýrsa bu
+            builder.EntityType<Category>().Action("TotalProductPrice").Returns<int>();
+
+            builder.EntityType<Category>().Collection.Action("TotalProductPrice2").Returns<int>();
+
+            //odata/categories/totalproductprice bodye eklenecek pametre
+
+            builder.EntityType<Category>().Collection.Action("TotalProductPriceWithParameter").Returns<int>().Parameter<int>("categoryId");
+
+
+            var actionTotal = builder.EntityType<Category>().Collection.Action("Total").Returns<int>();
+
+            actionTotal.Parameter<int>("a");
+            actionTotal.Parameter<int>("b");
+            actionTotal.Parameter<int>("c");
+
+
+            #endregion
+
+
+            #region Function
+
+            builder.EntityType<Category>().Collection.Function("CategoryCount").Returns<int>();
+
+
+           var multiplyFunction =  builder.EntityType<Product>().Collection.Function("MultiplyFunction").Returns<int>();
+
+           multiplyFunction.Parameter<int>("a1");
+           multiplyFunction.Parameter<int>("a2");
+           multiplyFunction.Parameter<int>("a3");
+
+            #endregion
+
+
+            builder.Function("GetKdv").Returns<int>();
+
+
+            //complex type
+            builder.EntityType<Product>().Collection.Action("LoginUser").Returns<string>().Parameter<Login>("UserLogin");
 
             if (env.IsDevelopment())
             {
@@ -68,7 +108,7 @@ namespace APIOdata.API
             {
                 endpoints.OrderBy().MaxTop(null).SkipToken().Count().Filter();
                 endpoints.Select().Expand();
-                endpoints.MapODataRoute("odata","odata", builder.GetEdmModel());
+                endpoints.MapODataRoute("odata", "odata", builder.GetEdmModel());
                 endpoints.MapControllers();
             });
         }
