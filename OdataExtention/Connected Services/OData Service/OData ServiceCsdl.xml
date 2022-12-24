@@ -1,0 +1,82 @@
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:DataServices>
+    <Schema Namespace="APIOdata.API.Model" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="Category">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <NavigationProperty Name="Products" Type="Collection(APIOdata.API.Model.Product)" />
+      </EntityType>
+      <EntityType Name="Product">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="Stock" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Price" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreatedDate" Type="Edm.DateTimeOffset" />
+        <Property Name="CategoryId" Type="Edm.Int32" />
+        <NavigationProperty Name="Category" Type="APIOdata.API.Model.Category">
+          <ReferentialConstraint Property="CategoryId" ReferencedProperty="Id" />
+        </NavigationProperty>
+      </EntityType>
+      <ComplexType Name="Login">
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="Password" Type="Edm.String" />
+      </ComplexType>
+    </Schema>
+    <Schema Namespace="Default" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Action Name="TotalProductPrice" IsBound="true">
+        <Parameter Name="bindingParameter" Type="APIOdata.API.Model.Category" />
+        <ReturnType Type="Edm.Int32" Nullable="false" />
+      </Action>
+      <Action Name="TotalProductPrice2" IsBound="true">
+        <Parameter Name="bindingParameter" Type="Collection(APIOdata.API.Model.Category)" />
+        <ReturnType Type="Edm.Int32" Nullable="false" />
+      </Action>
+      <Action Name="TotalProductPriceWithParameter" IsBound="true">
+        <Parameter Name="bindingParameter" Type="Collection(APIOdata.API.Model.Category)" />
+        <Parameter Name="categoryId" Type="Edm.Int32" Nullable="false" />
+        <ReturnType Type="Edm.Int32" Nullable="false" />
+      </Action>
+      <Action Name="Total" IsBound="true">
+        <Parameter Name="bindingParameter" Type="Collection(APIOdata.API.Model.Category)" />
+        <Parameter Name="a" Type="Edm.Int32" Nullable="false" />
+        <Parameter Name="b" Type="Edm.Int32" Nullable="false" />
+        <Parameter Name="c" Type="Edm.Int32" Nullable="false" />
+        <ReturnType Type="Edm.Int32" Nullable="false" />
+      </Action>
+      <Function Name="CategoryCount" IsBound="true">
+        <Parameter Name="bindingParameter" Type="Collection(APIOdata.API.Model.Category)" />
+        <ReturnType Type="Edm.Int32" Nullable="false" />
+      </Function>
+      <Function Name="MultiplyFunction" IsBound="true">
+        <Parameter Name="bindingParameter" Type="Collection(APIOdata.API.Model.Product)" />
+        <Parameter Name="a1" Type="Edm.Int32" Nullable="false" />
+        <Parameter Name="a2" Type="Edm.Int32" Nullable="false" />
+        <Parameter Name="a3" Type="Edm.Int32" Nullable="false" />
+        <ReturnType Type="Edm.Int32" Nullable="false" />
+      </Function>
+      <Function Name="GetKdv">
+        <ReturnType Type="Edm.Int32" Nullable="false" />
+      </Function>
+      <Action Name="LoginUser" IsBound="true">
+        <Parameter Name="bindingParameter" Type="Collection(APIOdata.API.Model.Product)" />
+        <Parameter Name="UserLogin" Type="APIOdata.API.Model.Login" />
+        <ReturnType Type="Edm.String" />
+      </Action>
+      <EntityContainer Name="Container">
+        <EntitySet Name="Categories" EntityType="APIOdata.API.Model.Category">
+          <NavigationPropertyBinding Path="Products" Target="Products" />
+        </EntitySet>
+        <EntitySet Name="Products" EntityType="APIOdata.API.Model.Product">
+          <NavigationPropertyBinding Path="Category" Target="Categories" />
+        </EntitySet>
+        <FunctionImport Name="GetKdv" Function="Default.GetKdv" IncludeInServiceDocument="true" />
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
